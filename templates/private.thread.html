@@ -1,0 +1,45 @@
+{{ define "content" }}
+
+<div class="panel panel-default mt-5">
+  <div class="card">
+    <div class="card-header bg-info">
+      <i class="fas fa-comment-alt"></i>{{ .Topic }}
+    </div>
+
+    <div class="card-block pull-right m-4">
+      Started by {{ .User.Name }} - {{ .CreatedAtDateThread }}
+    </div>
+  </div>
+
+  {{ range .Posts }}
+  <div class="card mt-2">
+    <div class="card-body">
+      <span class="lead"> <i class="fa fa-comment"></i> {{ .Body }}</span>
+
+      <div class="pull-right">{{ .User.Name }} - {{ .CreatedAtDatePost }}</div>
+    </div>
+  </div>
+
+  {{ end }}
+</div>
+
+<div class="panel panel-info mt-3">
+  <div class="panel-body">
+    <form role="form" action="/thread/post" method="post">
+      <div class="form-group">
+        <textarea
+          class="form-control"
+          name="body"
+          id="body"
+          placeholder="Write your reply here"
+          rows="3"
+        ></textarea>
+        <input type="hidden" name="uuid" value="{{ .Uuid }}" />
+        <br />
+        <button class="btn btn-primary pull-right" type="submit">Reply</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{{ end }}

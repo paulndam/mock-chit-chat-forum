@@ -1,0 +1,22 @@
+{{ define "content" }}
+<div class="panel panel-default mt-5">
+  <div class="card">
+    <div class="card-header bg-info">
+      <i class="fas fa-comment-alt"></i>{{ .Topic }}
+    </div>
+
+    <div class="card-block pull-right m-4">
+      Started by {{ .User.Name }} - {{ .CreatedAtDateThread }}
+    </div>
+  </div>
+  {{ range .Posts }}
+  <div class="card mt-2">
+    <div class="card-body bg-light">
+      <span class="lead"> <i class="fa fa-comment"></i> {{ .Body }}</span>
+
+      <div class="pull-right">{{ .User.Name }} - {{ .CreatedAtDatePost }}</div>
+    </div>
+  </div>
+  {{ end }}
+</div>
+{{ end }}
